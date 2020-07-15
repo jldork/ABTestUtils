@@ -1,0 +1,6 @@
+scipy
+
+# Testing
+spec
+expects
+nose
