@@ -1,5 +1,5 @@
 from scipy.stats import chi2_contingency
-from sample_sizer import p_value, Variant
+from sample_sizer import p_value, Variant, sample_size
 from expects import *
 from unittest import TestCase
 
@@ -22,3 +22,7 @@ class TestSampleSizeCalculator(TestCase):
         )
         exp_t_statistic, exp_pval , dof , exp = chi2_contingency([[12,12],[11,32]], correction=False)
         expect(round(p_val, 6)).to(equal(round(exp_pval,6)))
+
+    def test_can_check_sample_size(self):
+        sample = sample_size(baseline=0.2,mde=0.2)
+        expect(sample).to(equal(1323))
